@@ -1,4 +1,9 @@
+#!/usr/bin/env python3
+""" comment"""
+
+
 def canUnlockAll(boxes):
+    """comment"""
     num_boxes = len(boxes)
     visited = [False] * num_boxes
     visited[0] = True
@@ -12,4 +17,3 @@ def canUnlockAll(boxes):
                 stack.append(key)
     
     return all(visited)
-
