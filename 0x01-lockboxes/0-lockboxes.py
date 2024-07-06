@@ -25,10 +25,10 @@ def canUnlockAll(boxes):
 
     while current_key_index < len(keys_collected):
         current_box = keys_collected[current_key_index]
-        for key in boxes[curent_box]:
+        for key in boxes[current_box]:
             if 0 < key < num_boxes and key not in keys_collected:
                 keys_collected.append(key)
                 unlocked_boxes += 1
         current_key_index += 1
 
-    return unlocked_boxes == total_boxes - 1
+    return unlocked_boxes == num_boxes - 1
