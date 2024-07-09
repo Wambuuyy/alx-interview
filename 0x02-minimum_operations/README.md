@@ -1,11 +1,4 @@
-Here's an example of a `README.md` file for the `0x02-minimum_operations` project:
-
-```markdown
-# 0x02. Minimum Operations
-
-## Description
-
-This project involves calculating the minimum number of operations needed to result in exactly `n` characters in a file using only "Copy All" and "Paste" operations. The goal is to devise an efficient algorithm to solve this problem.
+ject involves calculating the minimum number of operations needed to result in exactly `n` characters in a file using only "Copy All" and "Paste" operations. The goal is to devise an efficient algorithm to solve this problem.
 
 ## Learning Objectives
 
