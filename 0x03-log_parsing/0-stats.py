@@ -15,8 +15,10 @@ for code in status_codes:
 
 # Regular expression to match the required log format
 log_pattern = re.compile(
-    r'(?P<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(?P<date>.+)\] "GET /projects/260 HTTP/1.1" (?P<status>\d{3}) (?P<size>\d+)'
+    r'(?P<ip>\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}) - \[(?P<date>.+)\]\
+        "GET /projects/260 HTTP/1.1" (?P<status>\d{3}) (?P<size>\d+)'
 )
+
 
 def print_stats():
     """Prints the current statistics."""
@@ -25,10 +27,12 @@ def print_stats():
         if status_counts[code] > 0:
             print(f"{code}: {status_counts[code]}")
 
+
 def signal_handler(sig, frame):
     """Handles the keyboard interruption signal."""
     print_stats()
     sys.exit(0)
+
 
 # Register the signal handler for keyboard interruption (CTRL + C)
 signal.signal(signal.SIGINT, signal_handler)
