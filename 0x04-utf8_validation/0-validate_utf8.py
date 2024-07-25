@@ -3,12 +3,15 @@
 utf validation interview preparation
 """
 
+
 def validUTF8(data):
     """ doc doc
     """
     num_bytes = 0
-    
+
     for byte in data:
+        if byte < 0 or byte > 255:
+            return False
         if num_bytes == 0:
             if byte >> 7 == 0b0:
                 continue
@@ -26,4 +29,3 @@ def validUTF8(data):
             num_bytes -= 1
 
     return num_bytes == 0
-
