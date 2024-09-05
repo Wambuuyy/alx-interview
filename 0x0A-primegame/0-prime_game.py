@@ -3,44 +3,29 @@
 
 
 def isWinner(x, nums):
-    """doc doc doc"""
-    def sieve(n):
-        """doc doc doc"""
-        primes = [True] * (n + 1)
-        p = 2
-        while (p * p <= n):
-            if primes[p]:
-                for i in range(p * p, n + 1, p):
-                    primes[i] = False
-            p += 1
-        return [p for p in range(2, n + 1) if primes[p]]
+    # Sieve of Eratosthenes to find all primes up to the max number in nums
+    max_n = max(nums)
+    sieve = [True] * (max_n + 1)
+    sieve[0] = sieve[1] = False
+    for i in range(2, int(max_n ** 0.5) + 1):
+        if sieve[i]:
+            for j in range(i * i, max_n + 1, i):
+                sieve[j] = False
+    primes = [i for i, is_prime in enumerate(sieve) if is_prime]
 
-    def play_game(n, primes):
-        """doc doc doc"""
-        available = [True] * (n + 1)
-        turn = 0  # Maria starts
-        for prime in primes:
-            if prime > n:
-                break
-            if available[prime]:
-                for i in range(prime, n + 1, prime):
-                    available[i] = False
-                turn = 1 - turn  # switch turn
-        return turn
-
-    primes = sieve(max(nums))
+    # Logic to simulate the game and determine the winner
     maria_wins = 0
     ben_wins = 0
 
     for n in nums:
-        if n == 1:
-            ben_wins += 1
+        # Count the number of primes <= n
+        prime_count = sum(1 for p in primes if p <= n)
+
+        # If prime_count is odd, Maria wins (as she starts)
+        if prime_count % 2 == 1:
+            maria_wins += 1
         else:
-            winner = play_game(n, primes)
-            if winner == 0:
-                ben_wins += 1
-            else:
-                maria_wins += 1
+            ben_wins += 1
 
     if maria_wins > ben_wins:
         return "Maria"
