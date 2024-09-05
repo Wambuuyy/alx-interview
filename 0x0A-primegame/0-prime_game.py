@@ -3,6 +3,7 @@
 
 
 def isWinner(x, nums):
+    """doc doc doc"""
     # Sieve of Eratosthenes to find all primes up to the max number in nums
     max_n = max(nums)
     sieve = [True] * (max_n + 1)
